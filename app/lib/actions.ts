@@ -53,6 +53,27 @@ export type InvoiceState = {
   message?: string | null;
 };
 
+// validations
+const CustomerFormSchema = z.object({
+  id: z.string(),
+  name: z.string({
+    invalid_type_error: 'Please insert a name.',
+  }),
+  email: z.string({
+    invalid_type_error: 'Please insert an e-mail.',
+  }),
+  imageUrl: z.string(),
+});
+
+export type CustomerState = {
+  errors?: {
+    name?: string[];
+    email?: string[];
+    imgUrl?: string[];
+  };
+  message?: string | null;
+};
+
 // Invoice Create
 const CreateInvoice = InvoiceFormSchema.omit({ id: true, date: true });
 export async function createInvoice(prevState: InvoiceState, formData: FormData) {
@@ -138,26 +159,6 @@ export async function deleteInvoice(id: string) {
 }
 
 // Customer Create
-// validations
-const CustomerFormSchema = z.object({
-  id: z.string(),
-  name: z.string({
-    invalid_type_error: 'Please insert a name.',
-  }),
-  email: z.string({
-    invalid_type_error: 'Please insert an e-mail.',
-  }),
-  imageUrl: z.string(),
-});
-
-export type CustomerState = {
-  errors?: {
-    name?: string[];
-    email?: string[];
-    imgUrl?: string[];
-  };
-  message?: string | null;
-};
 
 const CreateCustomer = CustomerFormSchema.omit({ id: true });
 export async function createCustomer(prevState: CustomerState, formData: FormData) {
