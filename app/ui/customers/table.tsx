@@ -1,12 +1,6 @@
 import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
 import { DeleteCustomer } from '@/app/ui/customers/buttons';
 import { fetchFilteredCustomers } from '@/app/lib/data';
-import {
-  CustomersTableType,
-  FormattedCustomersTable,
-} from '@/app/lib/definitions';
 
 export default async function CustomersTable({
   query,

@@ -1,6 +1,5 @@
 import CustomerCreateForm from '@/app/ui/customers/create-form';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
-import { fetchCustomers } from '@/app/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,8 +8,6 @@ export const metadata: Metadata = {
 
 
 export default async function Page() {
-  const customers = await fetchCustomers();
-
   return (
     <main>
       <Breadcrumbs
